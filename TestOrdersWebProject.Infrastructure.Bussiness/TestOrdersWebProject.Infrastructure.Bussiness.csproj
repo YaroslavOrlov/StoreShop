@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{992FBB04-A10F-490B-9B4E-093F4D7D55B7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TestOrdersWebProject.Infrastructure.Bussiness</RootNamespace>
+    <AssemblyName>TestOrdersWebProject.Infrastructure.Bussiness</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MakeProductDiscount.cs" />
+    <Compile Include="MakeProductPurchase.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TestOrdersWebProject.Domain.Core\TestOrdersWebProject.Domain.Core.csproj">
+      <Project>{a5f64e2d-be81-48a4-be10-8f91db3d7094}</Project>
+      <Name>TestOrdersWebProject.Domain.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TestOrdersWebProject.Domain.Interfaces\TestOrdersWebProject.Domain.Interfaces.csproj">
+      <Project>{f1fcebdb-b71d-49a7-8e30-134853d1c5c4}</Project>
+      <Name>TestOrdersWebProject.Domain.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TestOrdersWebProject.Infrastructure.Data\TestOrdersWebProject.Infrastructure.Data.csproj">
+      <Project>{9fd7705b-69a1-4efd-b2e8-7193bb51993d}</Project>
+      <Name>TestOrdersWebProject.Infrastructure.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TestOrdersWebProject.Infrastructure.Interfaces\TestOrdersWebProject.Infrastructure.Interfaces.csproj">
+      <Project>{b6701946-9073-4a7e-a7db-79a52ebba236}</Project>
+      <Name>TestOrdersWebProject.Infrastructure.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TestOrdersWebProject.Services.DTO\TestOrdersWebProject.Services.DTO.csproj">
+      <Project>{d2fea307-6d19-4a30-871a-5102809836a9}</Project>
+      <Name>TestOrdersWebProject.Services.DTO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TestOrdersWebProject.Services.Interfaces\TestOrdersWebProject.Services.Interfaces.csproj">
+      <Project>{686d33cf-aac5-40de-b677-878db63e3b17}</Project>
+      <Name>TestOrdersWebProject.Services.Interfaces</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

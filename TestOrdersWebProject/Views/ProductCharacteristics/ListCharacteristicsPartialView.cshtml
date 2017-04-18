@@ -1,0 +1,4 @@
+﻿@model IEnumerable<TestOrdersWebProject.Domain.Core.ProductCharacteristic>
+
+@Html.ListBox("Characteristics", ViewBag.Characteristics as IEnumerable<SelectListItem>, new { @class = "form-control" })
+

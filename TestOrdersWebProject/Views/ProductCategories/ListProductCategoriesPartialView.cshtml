@@ -1,0 +1,3 @@
+﻿@model IEnumerable<TestOrdersWebProject.Domain.Core.ProductCategory>
+
+@Html.ListBox("Categories", ViewBag.Categories as IEnumerable<SelectListItem>, new { @class = "form-control" })

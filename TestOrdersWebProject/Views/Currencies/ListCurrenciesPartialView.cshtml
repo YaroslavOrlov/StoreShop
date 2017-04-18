@@ -1,0 +1,3 @@
+﻿@model IEnumerable<TestOrdersWebProject.Domain.Core.Currency>
+
+@Html.DropDownList("CurrencyId", ViewBag.CurrencyId as IEnumerable<SelectListItem>, htmlAttributes: new { @class = "form-control" })

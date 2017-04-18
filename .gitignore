@@ -1,0 +1,22 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/packages
+/.vs/TestOrdersWebProject/v14
+/TestOrdersWebProject.Domain.Core/bin/Debug
+/TestOrdersWebProject.Domain.Core/obj
+/TestOrdersWebProject.Infrastructure.Bussiness/bin/Debug
+/TestOrdersWebProject.Infrastructure.Bussiness/obj/Debug
+/TestOrdersWebProject.Infrastructure.Data/bin/Debug
+/TestOrdersWebProject.Infrastructure.Data/obj
+/TestOrdersWebProject.Infrastructure.Interfaces/bin/Debug
+/TestOrdersWebProject.Infrastructure.Interfaces/obj
+/TestOrdersWebProject.Services.Interfaces/bin/Debug
+/TestOrdersWebProject.Services.Interfaces/obj/Debug
+/TestOrdersWebProject.Tests/bin/Debug
+/TestOrdersWebProject.Tests/obj/Debug
+/TestOrdersWebProject/bin
+/TestOrdersWebProject/obj
+/TestOrdersWebProject.Domain.Interfaces/bin/Debug
+/TestOrdersWebProject.Domain.Interfaces/obj/Debug

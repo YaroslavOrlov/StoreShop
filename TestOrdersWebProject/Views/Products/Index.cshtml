@@ -1,0 +1,138 @@
+﻿@model IEnumerable<TestOrdersWebProject.Domain.Core.Currency>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<div class="alert alert-success hidden">
+    <strong>Success!</strong> Purchase was successed!
+</div>
+<div class="alert alert-danger hidden">
+    <strong>Danger!</strong> Invalid purchase operation!
+</div>
+@if (User.IsInRole("Admin"))
+{
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+}
+<div ng-controller="productsController">
+    <div ng-show="!isPay">
+        <table class="table table-hover table-condensed">
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr ng-repeat="product in products">
+                <td>{{product.Name}}</td>
+                <td>{{product.Description}}</td>
+                <td>{{product.Price}}$</td>
+                <td>
+                    <a ng-href="@Url.Action("Edit", "Products")/{{product.Id}}">Edit</a> |
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <a ng-href="@Url.Action("Details", "Products")/{{product.Id}}">Details</a> <span>|</span>
+                    }
+                    <a ng-href="@Url.Action("Delete", "Products")/{{product.Id}}">Delete</a>
+                </td>
+                <td>
+                    <div class="input-group">
+                        <input type="number" min="1" ng-model="product.Count" class="form-control" />
+                        <span class="input-group-btn">
+                            <input type="button" ng-click="addToCart(product)" value="Buy product" class="form-control" />
+                        </span>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <div ng-show="cart.length">
+            <h3>cart</h3>
+            <div>
+                <table class="table table-condensed">
+                    <tr>
+                        <th>Name</th>
+                        <th>Price per unit</th>
+                        <th>Amount</th>
+                        <th></th>
+                    </tr>
+                    <tr ng-repeat="product in cart">
+                        <td>{{product.Name}}</td>
+                        <td>{{product.Price}}$</td>
+                        <td>{{product.Count}}</td>
+                        <td>
+                            <input type="button" ng-click="removeFromCart(product)" value="Remove" class="form-control pull-right" />
+                        </td>
+                    </tr>
+                </table>
+                <div>
+                    <p>
+                        <h4>
+                            <b> Summary price: {{summaryPrice | number: 2}}$</b>
+                        </h4>
+                    </p>
+                </div>
+                <div>
+                    <div class="input-group">
+                        <label><b>Discount code</b></label>
+                        <input type="number" min="1000" max="9999" ng-model="discountCode" class="form-control" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <input type="button" ng-click="makeOrder(discountCode)" value="Go to payment!" class="form-control pull-right" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div ng-show="isPay">
+        <h3>Payment</h3>
+        <p>
+            @Html.Action("GetListCurrencies", "Currencies")
+        </p>
+        <div>
+            <table class="table table-condensed">
+                <tr>
+                    <th>Name</th>
+                    <th>Price per unit</th>
+                    <th>Amount</th>
+                    <th>Summary</th>
+                    <th>Discount</th>
+                </tr>
+                <tr ng-repeat="product in discountedCart">
+                    <td>{{product.Name}}</td>
+                    <td>{{product.Price / product.Count}}$</td>
+                    <td>{{product.Count}}</td>
+                    <td>{{product.Price}}$</td>
+                    <td>{{product.Discount}}%</td>
+                </tr>
+            </table>
+            <div>
+                <p>
+                    <h4>
+                        <b> Summary price: {{summaryPrice | number: 2}}</b>
+                    </h4>
+                </p>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <input type="button" ng-click="payForPurchase()" value="Pay for purchase" class="form-control pull-right" />
+                        <input type="button" ng-click="changeOrder()" value="Go back" class="form-control pull-right" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  
+</div>
+
+@section scripts{
+<script src="~/Scripts/angularApp/controllers/productsController.js"></script>
+}
+
